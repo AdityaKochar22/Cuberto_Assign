@@ -3,11 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import letterLogo from './letter.png';
 import circleVideo from './video.mp4';
 import ThreeD_W from './ThreeD_W';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import { HashRouter as Router } from 'react-router-dom';
 import WaveBackground from './WaveBackground';
 import ProjectGallery from './components/ProjectGallery';
-// import circleVideo from './video.mp4';
 
 function App() {
   const videoRef = useRef(null);
@@ -55,111 +53,109 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={
-          <div ref={firstPageRef} className="page-section app-container">
-            <main className="main-content">
-              <div className="left-section">
-                <div className="logo-container">
-                  <img 
-                    src={letterLogo} 
-                    alt="Cuberto Logo" 
-                    className="cuberto-logo"
-                  />
-                </div>
+      <div>
+        {/* First Page */}
+        <div ref={firstPageRef} className="page-section app-container">
+          <main className="main-content">
+            <div className="left-section">
+              <div className="logo-container">
+                <img 
+                  src={letterLogo} 
+                  alt="Cuberto Logo" 
+                  className="cuberto-logo"
+                />
               </div>
-              
-              <div className="right-section">
-                <div className="text-content">
-                  <h1 className="heading">
-                    <div className="heading-line">We are a digital</div>
-                    <div className="heading-line">
-                      <span className="oval-video-container">
-                        <video 
-                          ref={videoRef}
-                          src={circleVideo}
-                          autoPlay 
-                          loop 
-                          muted 
-                          playsInline 
-                          className="oval-video"
-                          onError={(e) => console.error("Video error:", e)}
-                        >
-                        </video>
-                      </span>
-                      design and
-                    </div>
-                    <div className="heading-line">motion agency</div>
-                  </h1>
-                  
-                  <button className="what-we-do-button">
-                    What we do
-                  </button>
-                </div>
+            </div>
+            
+            <div className="right-section">
+              <div className="text-content">
+                <h1 className="heading">
+                  <div className="heading-line">We are a digital</div>
+                  <div className="heading-line">
+                    <span className="oval-video-container">
+                      <video 
+                        ref={videoRef}
+                        src={circleVideo}
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        className="oval-video"
+                        onError={(e) => console.error("Video error:", e)}
+                      >
+                      </video>
+                    </span>
+                    design and
+                  </div>
+                  <div className="heading-line">motion agency</div>
+                </h1>
                 
-                
+                <button className="what-we-do-button">
+                  What we do
+                </button>
               </div>
-            </main>
-          </div>
-        } />
-        
-      </Routes>
-      
-      <div ref={projectsPageRef} className="page-section projects-page">
-        <div className="projects-header">
-          <div className="scroll-wrapper">
-            {/* First copy of the text */}
-            <div className="header-text">
-              <span className="text-with-video">Inspo</span>
-              <span className="green-circle">
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="circle-video"
-                >
-                  <source src={circleVideo} type="video/mp4" />
-                </video>
-              </span>
-              <span className="text-end">New Day </span>
             </div>
-            {/* Second copy of the text for seamless loop */}
-            <div className="header-text">
-              <span className="text-with-video"> New Inspo</span>
-              <span className="green-circle">
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="circle-video"
-                >
-                  <source src={circleVideo} type="video/mp4" />
-                </video>
-              </span>
-              <span className="text-end">New Day</span>
-            </div>
-          </div>
+          </main>
         </div>
-        <ProjectGallery />
-      </div>
 
-      <div ref={contactPageRef} className="page-section contact-page">
-        <WaveBackground />
-        <div className="contact-content">
-          <h1>
-            Have
-            <br />
-            an idea?
-          </h1>
-          <button className="tell-us-button">TELL US</button>
-          <div className="contact-info">
-            <a href="mailto:INFO@CUBERTO.COM">INFO@CUBERTO.COM</a>
-            <a href="tel:+13015499309">+91 31234567</a>
+        {/* Projects Page */}
+        <div ref={projectsPageRef} className="page-section projects-page">
+          <div className="projects-header">
+            <div className="scroll-wrapper">
+              {/* First copy of the text */}
+              <div className="header-text">
+                <span className="text-with-video">Inspo</span>
+                <span className="green-circle">
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="circle-video"
+                  >
+                    <source src={circleVideo} type="video/mp4" />
+                  </video>
+                </span>
+                <span className="text-end">New Day </span>
+              </div>
+              {/* Second copy of the text for seamless loop */}
+              <div className="header-text">
+                <span className="text-with-video"> New Inspo</span>
+                <span className="green-circle">
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="circle-video"
+                  >
+                    <source src={circleVideo} type="video/mp4" />
+                  </video>
+                </span>
+                <span className="text-end">New Day</span>
+              </div>
+            </div>
           </div>
-          <div className="privacy-policy">
-            <a href="/privacy">PRIVACY POLICY</a>
+          <ProjectGallery />
+        </div>
+
+        {/* Contact Page */}
+        <div ref={contactPageRef} className="page-section contact-page">
+          <WaveBackground />
+          <div className="contact-content">
+            <h1>
+              Have
+              <br />
+              an idea?
+            </h1>
+            <button className="tell-us-button">TELL US</button>
+            <div className="contact-info">
+              <a href="mailto:INFO@CUBERTO.COM">INFO@CUBERTO.COM</a>
+              <a href="tel:+13015499309">+91 31234567</a>
+            </div>
+            <div className="privacy-policy">
+              <a href="/privacy">PRIVACY POLICY</a>
+            </div>
           </div>
         </div>
       </div>
